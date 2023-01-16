@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <section class="container">
+        <section>
+            <div class="buttons">
+                <button class="btn1 btn element js-btn1">
+                    Button 1
+                </button>
+             
+                <button class="btn btn2 element js-btn2">
+                    Button 2
+                </button>
+                <button class="btn btn3 element js-btn3">
+                    Button 3
+                </button>
+                <button class="btn btn4 element js-btn4">
+                    Button 4
+                </button>
+                <button class="btn btn5 element js-btn5">
+                    Button 5
+                </button>
+                <button class="btn btn6 element js-btn6">
+                    Button 6
+                </button>
+            </div>
+        </section>
+        <section>
+            <div class="grid-container">
+                <div class="grid-item square1 element"></div>
+                <script>
+                    const btn1 = document.querySelector(".js-btn1")
+                    const square1 = document.querySelector(".square1") 
+                    btn1.addEventListener("click", function() {
+                     square1.style.backgroundColor = "yellow";
+                    });
+                </script>
+                <div class="grid-item square2 element flexcenter font">
+                    <span class="square2__text">FAIL</span>
+                </div>
+                <script>
+                    const textContainer = document.querySelector('.square2');
+                    const button2 = document.querySelector('.btn2');
+                    button2.addEventListener('click', function() {
+                    textContainer.innerHTML = 'SUCCESS';
+                    });
+                </script>
+
+                <div class="grid-item square3 element"></div>
+                <script>
+                    const hideBox = document.querySelector('.square3');
+                    const button = document.querySelector('.js-btn3');
+                    button.addEventListener('click', function() {
+                    hideBox.style.visibility = 'hidden';
+                    });
+                </script>
+                <div class="grid-item square4 element"></div>
+                <script>
+                    const square4 = document.querySelector('.square4')
+                    const button4 = document.querySelector('.btn4')
+                    let isVisible = true;
+                    button4.addEventListener('click', function() {
+                        if (isVisible) {
+                            square4.style.visibility = 'hidden'
+                            isVisible = false
+                        } else {
+                            square4.style.visibility = 'visible'
+                            isVisible = true
+                        }
+                    })
+                </script>
+                <div class="grid-item square5 element flexcenter font">
+                    <span>0</span>
+                </div>
+                <script>
+                    const square5 = document.querySelector('.square5')
+                    const button5 = document.querySelector('.js-btn5')
+                    const colors = ['red', 'green', 'blue', 'purple', 'orange']
+                    button5.addEventListener('click', function() {
+                        square5.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]
+                    })
+
+                    const timerDiv = document.querySelector('.timer-div');
+
+                    let timerId;
+
+                    square5.addEventListener('mouseover', function() {
+                    let count = 0;
+                    timerId = setInterval(function() {
+                        if (count === 11) {
+                        clearInterval(timerId);
+                        } else {
+                        square5.textContent = count;
+                        count++;
+                        }
+                    }, 1000);
+                    });
+
+                    square5.addEventListener('mouseout', function() {
+                    clearInterval(timerId);
+                    square5.textContent = 0;
+});
+
+
+                </script>
+                <div class="grid-item js_square6 element flexcenter font">
+                    <span>0</span>
+                </div>
+                <script>
+                    const js_square6 = document.querySelector('.js_square6');
+                    const button6 = document.querySelector('.js-btn6');
+                    let number = 0;
+                    let intervalId;
+                    button6.addEventListener('click', function() {
+                    intervalId = setInterval(() => {
+                        if (number === 9) {
+                        clearInterval(intervalId);
+                        }
+                        number++;
+                        js_square6.innerHTML = number;
+                    }, 3000);
+                    });
+                </script>
+            </div>
+        </section>
+        <section>
+            <div class="buttonandinput">
+                <button class="btn btn7 element js-btn7">
+                    Button 7
+                </button>
+                <script>
+                    const s1 = document.querySelector('.square1')
+                    const s2 = document.querySelector('.square2')
+                    const s3 = document.querySelector('.square3')
+                    const s4 = document.querySelector('.square4')
+                    const s5 = document.querySelector('.square5')
+                    const s6 = document.querySelector('.js_square6')
+                    const sq3 = document.querySelector('.square3')
+
+                    const bckground = document.querySelector('.container')
+                    const button7 = document.querySelector('.btn7')
+
+                    button7.addEventListener('click', function() {
+                        bckground.style.background = '#000000'
+                        s2.style.background = '#18D5E1'
+                        s1.style.background = '#18D5E1'
+                        s3.style.background = '#18D5E1'
+                        s4.style.background = '#18D5E1'
+                        s5.style.background = '#18D5E1'
+                        s6.style.background = '#18D5E1'
+                        sq3.style.visibility = 'visible'
+                    })
+                </script>
+                <form>
+                    <input class="input" type="text" placeholder="Input placeholder">
+                </form>
+                <div class="output"></div>
+                <script>
+                    const inputField = document.querySelector('.input');
+                    const output = document.querySelector('.output');
+
+                    inputField.addEventListener('input', function() {
+                    output.textContent = inputField.value;
+                    });
+                </script>
+            </div>
+        </section>
+    </section>
+</body>
+</html>
